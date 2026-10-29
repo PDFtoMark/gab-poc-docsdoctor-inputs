@@ -1,0 +1,18 @@
+name: docs doctor input probe
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+  pull-requests: write
+jobs:
+  docs-doctor:
+    name: Analyze docs.wpvip.com for inconsistencies
+    runs-on: ubuntu-latest
+    steps:
+      - name: Generate Report
+        uses: Automattic/vip-actions/docs-doctor@6bf9fde7ac8acce516488384357e3e6fb28669cf
+        with:
+          url: https://docs.wpvip.com
+          sitemap_url: https://docs.wpvip.com/page-sitemap.xml
+          openai_api_key: dummy-value-not-a-real-key
+          pr_number: '1'
